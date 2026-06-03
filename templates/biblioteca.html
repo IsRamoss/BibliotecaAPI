@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Livros{% endblock %}
+
+{% block conteudo %}
+<div>
+    <h1>Esta é a página inicial da biblioteca</h1>
+    <table>
+        <tr>
+            {% for key,value in livros[0].items() %}
+            
+                {% if key != "isbn" %}
+                    {% if key == "titulo" %}
+                    <td>título</td>
+                    {%elif key == "paginas"%}
+                    <td>páginas</td>
+                    {%elif key =="localizacao"%}
+                    <td>localização</td>
+                    {%elif key == "genero"%}
+                    <td>gênero</td>
+                    {%elif key == "ano_publicacao"%}
+                    <td>ano publicação</td>
+                    {%else%}
+                    <td>{{key | replace('_', ' ')}}</td>
+                    {%endif%}
+                {%else%}
+                <td>{{key | upper}} </td>
+                {% endif %}
+                
+            {% endfor %}
+        </tr>
+    {% for livro in livros %}
+        <tr>
+        {% for key, value in livro.items() %}
+            {% if key == "isbn" %}
+                <td>{{ value | upper}}</td>
+            {% else %}
+                <td>{{ value | replace('_', ' ') }}</td>
+            {%endif%}
+
+
+
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
