@@ -1,0 +1,59 @@
+<<<<<<< HEAD
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+  }
+  
+  td, th {
+    border: 1px solid black; 
+    padding: 8px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  table tr:first-child td{
+    background-color: #145A32;
+    color: white;
+}
+
+td{
+    background-color: #D5F5E3;
+    color: #1B4332;
+}
+
+form{
+  display: flex;
+  width: 25%;
+  flex-flow: column;
+}
+label{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+button{
+  height: 25px;
+=======
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+  }
+  
+  td, th {
+    border: 1px solid black; 
+    padding: 8px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  table tr:first-child td{
+    background-color: #145A32;
+    color: white;
+}
+
+td{
+    background-color: #D5F5E3;
+    color: #1B4332;
+>>>>>>> origin/main
+}
