@@ -64,7 +64,6 @@ if __name__ == "__main__":
 
 
 
-#TEsTE
 # @app.route("/biblioteca", methods=["GET", "POST"])
 # @app.route("/biblioteca/<isbn>", methods=["GET", "PUT", "DELETE"])
 # def manipular_livros(isbn=None):
