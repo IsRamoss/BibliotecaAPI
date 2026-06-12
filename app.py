@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, flash, url_for
 import json
 import os
 
 app = Flask(__name__)
+app.config['SECRET-KEY'] = 'segredoSH'
 pastaDiretorio = "arquivos"
 bibliotecaArq = "biblioteca.json"
 caminhoArquivo = os.path.join(pastaDiretorio, bibliotecaArq)
@@ -54,6 +55,15 @@ def cria_livro():
         return render_template('criarLivros.html')
 
 
+@app.route("/biblioteca/excluir/<isbn>", methods = ['POST'])
+def excluir_livro(isbn):
+    livros = carregar_biblioteca()
+    for livro in livros:
+        if livro['isbn'] == isbn:
+            livros = livros.remove(livro)
+    salvar_biblioteca(livros)
+    flash(f'Livro com ISBN {isbn} foi removido com sucesso!', 'success')
+    return redirect(url_for('interface_web'))
 
 
 # ==================================================================================================== 

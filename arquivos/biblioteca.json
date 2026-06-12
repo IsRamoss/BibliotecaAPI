@@ -42,5 +42,16 @@
         "paginas": "123",
         "status": "AAB",
         "localizacao": "aA"
+    },
+    {
+        "isbn": "11111",
+        "titulo": "adsada",
+        "autor": "asdsada",
+        "genero": "asdasdas",
+        "ano_publicacao": "1234",
+        "editora": "asdasda",
+        "paginas": "5632",
+        "status": "aaaaaaaa",
+        "localizacao": "sumiu"
     }
 ]
