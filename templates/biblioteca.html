@@ -28,11 +28,7 @@
                 {% endif %}
                 
             {% endfor %}
-            <td>
-                <form action="">
-                    <button>EXCLUIR</button>
-                </form>
-            </td>
+            <td>Excluir</td>
         </tr>
     {% for livro in livros %}
         <tr>
@@ -42,10 +38,12 @@
             {% else %}
                 <td>{{ value | replace('_', ' ') }}</td>
             {%endif%}
-
-
-
         {% endfor %}
+        <td>
+            <form action="{{ url_for('excluir_livro', isbn=livro.isbn) }}" method="POST">
+                <button type="submit" class="excluir">EXCLUIR</button>
+            </form>
+        </td>
         </tr>
     {% endfor %}
     </table>

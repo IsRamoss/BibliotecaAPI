@@ -3,7 +3,7 @@ import json
 import os
 
 app = Flask(__name__)
-app.config['SECRET-KEY'] = 'segredoSH'
+app.config['SECRET_KEY'] = 'segredoSH'
 pastaDiretorio = "arquivos"
 bibliotecaArq = "biblioteca.json"
 caminhoArquivo = os.path.join(pastaDiretorio, bibliotecaArq)
@@ -46,7 +46,7 @@ def cria_livro():
         }
         for livro in livros:
             if livro["isbn"] == novoLivro["isbn"]:
-                return jsonify({"mensagem": "erro: isbn j� existe"}), 200
+                return jsonify({"mensagem": "erro: isbn já existe"}), 200
     
         livros.append(novoLivro)
         salvar_biblioteca(livros)
@@ -60,9 +60,9 @@ def excluir_livro(isbn):
     livros = carregar_biblioteca()
     for livro in livros:
         if livro['isbn'] == isbn:
-            livros = livros.remove(livro)
+            livros.remove(livro)
     salvar_biblioteca(livros)
-    flash(f'Livro com ISBN {isbn} foi removido com sucesso!', 'success')
+    flash(f"Livro com ISBN {isbn} foi removido com sucesso!", "success")
     return redirect(url_for('interface_web'))
 
 
