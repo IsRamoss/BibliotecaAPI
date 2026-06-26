@@ -51,6 +51,21 @@ def cria_livro():
                 return jsonify({"mensagem": "erro: isbn já existe"}), 200
         livros.append(novoLivro)
         salvar_biblioteca(livros) 
+
+                
+        novoLivro = (
+        request.form.get('isbn'),
+        request.form.get('titulo'),
+        request.form.get('autor'),
+        request.form.get('genero'),
+        request.form.get('ano_publicacao'),
+        request.form.get('editora'),
+        request.form.get('paginas'),
+        request.form.get('status'),
+        request.form.get('localizacao')
+        )
+        database.insertSql('livros', novoLivro)
+
         return render_template("biblioteca.html", livros=livros)
     else:
         return render_template('criarLivros.html')
