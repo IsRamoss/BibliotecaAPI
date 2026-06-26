@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, render_template, redirect, flash, url
 import json
 import os
 
+import database
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'segredoSH'
 pastaDiretorio = "arquivos"
@@ -47,9 +49,8 @@ def cria_livro():
         for livro in livros:
             if livro["isbn"] == novoLivro["isbn"]:
                 return jsonify({"mensagem": "erro: isbn já existe"}), 200
-    
         livros.append(novoLivro)
-        salvar_biblioteca(livros)
+        salvar_biblioteca(livros) 
         return render_template("biblioteca.html", livros=livros)
     else:
         return render_template('criarLivros.html')
@@ -65,6 +66,25 @@ def excluir_livro(isbn):
     flash(f"Livro com ISBN {isbn} foi removido com sucesso!", "success")
     return redirect(url_for('interface_web'))
 
+@app.route("/biblioteca/atualizar/<isbn>", methods = ['GET','POST'])
+def atualizar_livro(isbn=None):
+    livros = carregar_biblioteca()
+
+    if request.method == 'GET':
+        for livro in livros:
+            if livro['isbn'] == isbn:
+                return render_template('atualizarLivros.html', livro=livro)
+        return "Livro não encontrado", 404
+
+    if request.method == 'POST':
+        for livro in livros:
+            if livro['isbn'] == isbn:
+                for key in livro.keys():
+                    livro[key] = request.form.get(key)
+                salvar_biblioteca(livros)
+        return redirect(url_for('interface_web'))
+  
+    
 
 # ==================================================================================================== 
 

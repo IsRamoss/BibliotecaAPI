@@ -3,6 +3,9 @@
   box-sizing: border-box;
 }
 
+
+
+
 table {
     border-collapse: collapse;
     width: 80%;
@@ -26,33 +29,68 @@ td{
 }
 
 form{
-  display: flex;
-  width: 25%;
-  flex-flow: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #FFFFFF;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 2.5px 10px 2px rgba(0,0,0,0.15);
 }
+
+input{
+  background-color: #F8F9FA;
+  border: 1px solid #CED4DA;
+  border-radius: 5px;
+  padding: 5px;
+  color: #212529;
+  margin-left: 10px;
+}
+
+input:focus{
+  border-color: #198754;
+  outline: none;
+}
+
+button{
+  display: block;
+  width: 150px;
+  height: 30px;
+  background-color: #198754;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 15px auto ;
+}
+
+button:hover{
+  background-color: #157347;
+}
+
+
 label{
   display: flex;
   justify-content: space-between;
   text-align: center;
+  color: #2C3E50;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-button{
-  height: 25px;
-}
-
-form{
-  width: 100%;
-}
 .excluir{
   width: 100%;
-  background-color: tomato;
+  background-color: #DC3545;
   color: white;
   outline: 0;
-  border: 1px solid black ;
+  border: 1px solid #B02A37;
   padding: 20px 10px;
   font-size: 12px;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.excluir:hover{
+  background-color: #BB2D3B;
 }
